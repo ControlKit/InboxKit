@@ -1,2 +1,2 @@
-# InboxViewKit
-InboxView, Swift, iOS
+# InboxKit
+InboxKit, Inbox View, Swift, iOS
