@@ -28,6 +28,7 @@ class InboxViewController: UIViewController {
                                             config: config.viewConfig)
         view.addSubview(inboxView)
         inboxView.fixInView(view)
+        ItemTableViewCell.register(in: inboxView.tableView)
         inboxView.tableView.dataSource = self
         inboxView.tableView.delegate = self
         Task {
