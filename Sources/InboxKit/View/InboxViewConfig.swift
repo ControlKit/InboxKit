@@ -1,0 +1,49 @@
+//
+//  File.swift
+//  
+//
+//  Created by Maziar Saadatfar on 10/18/23.
+//
+
+import Foundation
+import UIKit
+public class InboxViewConfig {
+    public init(lang: String) {
+        self.lang = lang
+    }
+    public let lang: String
+    public var style: InboxViewStyle = .darkMode
+    public var contentViewBackColor: UIColor = UIColor(r: 0, g: 0, b: 0, a: 1.0)
+    
+    public var titleFont = UIFont.systemFont(ofSize: 18, weight: .heavy)
+    public var title = "It's an Inbox"
+    public var titleColor: UIColor = UIColor(r: 18, g: 18, b: 18)
+    
+    public var cell_TitleFont = UIFont.systemFont(ofSize: 15, weight: .semibold)
+    public var cell_Title = "It's an Inbox"
+    public var cell_TitleColor: UIColor = UIColor(r: 81, g: 81, b: 254)
+    
+    public var cell_DescriptionFont = UIFont.systemFont(ofSize: 13, weight: .medium)
+    public var cell_Description = "It's an Inbox"
+    public var cell_DescriptionColor: UIColor = UIColor(r: 213, g: 213, b: 213)
+    
+    public var cell_DateFont = UIFont.systemFont(ofSize: 10, weight: .regular)
+    public var cell_Date = "date"
+    public var cell_DateColor: UIColor = UIColor(r: 213, g: 213, b: 213)
+    
+    public var detailPage_TitleFont = UIFont.systemFont(ofSize: 18, weight: .heavy)
+    public var detailPage_Title = "It's an Inbox"
+    public var detailPage_TitleColor: UIColor = UIColor(r: 18, g: 18, b: 18)
+    
+    public var detailPage_DescriptionFont = UIFont.systemFont(ofSize: 18, weight: .heavy)
+    public var detailPage_Description = "It's an Inbox"
+    public var detailPage_DescriptionColor: UIColor = UIColor(r: 18, g: 18, b: 18)
+    
+    public var detailPage_DateFont = UIFont.systemFont(ofSize: 18, weight: .heavy)
+    public var detailPage_Date = "It's an Inbox"
+    public var detailPage_DateColor: UIColor = UIColor(r: 18, g: 18, b: 18)
+    
+    public var cell_ContentViewBGColor: UIColor = UIColor(r: 18, g: 18, b: 18)
+    public var cell_separatorColor: UIColor =  UIColor(r: 29, g: 32, b: 37)
+    public var cell_arrowIconColor: UIColor =  UIColor(r: 29, g: 32, b: 37)
+}
