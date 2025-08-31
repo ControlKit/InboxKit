@@ -11,9 +11,15 @@ public struct InboxViewPresenter {
     public init(data: InboxModel?, config: InboxViewConfig) {
         self.config = config
         if let localTitle = data?.title,
-            let title = getLocalizeString(localTitle) { self.config.detailPage_Title = title }
+            let title = getLocalizeString(localTitle) {
+            self.config.detailPage_Title = title
+            self.config.cell_Title = title
+        }
         if let localDescription = data?.description,
-           let description = getLocalizeString(localDescription) { self.config.detailPage_Description = description }
+           let description = getLocalizeString(localDescription) {
+            self.config.detailPage_Description = description
+            self.config.cell_Description = description
+        }
         if let date = data?.date { self.config.detailPage_Date = date }
     }
     
