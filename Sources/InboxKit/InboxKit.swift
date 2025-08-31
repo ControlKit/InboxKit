@@ -5,6 +5,9 @@ import UIKit
 import Combine
 
 public class InboxKit {
+    public init() {
+    }
+    
     @MainActor
     public func configure(root: UIViewController,
                           modalPresentationStyle: UIModalPresentationStyle = .fullScreen,
