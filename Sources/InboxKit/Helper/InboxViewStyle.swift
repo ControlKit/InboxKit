@@ -23,6 +23,18 @@ public enum InboxViewStyle {
         }
     }
     
+    public static func makeDetails(viewModel: DetailViewModel,
+                                   config: InboxViewConfig) -> DetailViewProtocol {
+        switch config.style {
+        case .darkMode:
+            return DetailView_DarkMode(viewModel: viewModel,
+                                       config: config)
+        case .lightMode:
+            return DetailView_LightMode(viewModel: viewModel,
+                                        config: config)
+        }
+    }
+    
     public static func getViewConfigWithStyle(style: InboxViewStyle, lang: String) -> InboxViewConfig {
         switch style {
         case .darkMode:

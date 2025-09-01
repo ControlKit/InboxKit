@@ -25,8 +25,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let inboxView = DetailViewStyle.make(viewModel: viewModel,
-                                             config: config.viewConfig)
+        let inboxView = InboxViewStyle.makeDetails(viewModel: viewModel,
+                                                   config: config.viewConfig)
         view.addSubview(inboxView)
         inboxView.fixInView(view)
     }
