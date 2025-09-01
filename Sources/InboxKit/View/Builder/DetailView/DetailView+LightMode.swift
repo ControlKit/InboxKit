@@ -1,5 +1,5 @@
 //
-//  DetailView+LightMode.swift
+//  DetailView+DarkMode.swift
 //  InboxKit
 //
 //  Created by Maziar Saadatfar on 8/31/25.
@@ -50,6 +50,7 @@ public class DetailView_LightMode: UIView, DetailViewProtocol {
         descriptionView.text = config.detailPage_Description
         descriptionView.textColor = config.detailPage_DescriptionColor
         descriptionView.textAlignment = config.rightToLeft ?.right : .left
+        descriptionView.backgroundColor = config.contentViewBackColor
         return descriptionView
     }()
     
@@ -97,7 +98,7 @@ public class DetailView_LightMode: UIView, DetailViewProtocol {
             toItem: contentView,
             attribute: .top,
             multiplier: 1,
-            constant: 50).isActive = true
+            constant: 100).isActive = true
         titleLabel.leadingAnchor.constraint(
             equalTo: contentView.leadingAnchor,
             constant: 24).isActive = true
@@ -112,7 +113,7 @@ public class DetailView_LightMode: UIView, DetailViewProtocol {
             toItem: nil,
             attribute: .notAnAttribute,
             multiplier: 1,
-            constant: 24).isActive = true
+            constant: -24).isActive = true
     }
     
     public func setDateViewConstraint() {
@@ -130,7 +131,7 @@ public class DetailView_LightMode: UIView, DetailViewProtocol {
             constant: 24).isActive = true
         dateLabel.trailingAnchor.constraint(
             equalTo: contentView.trailingAnchor,
-            constant: 24).isActive = true
+            constant: -24).isActive = true
         
         NSLayoutConstraint(
             item: dateLabel,
@@ -157,7 +158,7 @@ public class DetailView_LightMode: UIView, DetailViewProtocol {
             constant: 24).isActive = true
         underLineView.trailingAnchor.constraint(
             equalTo: contentView.trailingAnchor,
-            constant: 24).isActive = true
+            constant: -24).isActive = true
         
         NSLayoutConstraint(
             item: underLineView,
@@ -185,7 +186,7 @@ public class DetailView_LightMode: UIView, DetailViewProtocol {
             constant: 24).isActive = true
         descriptionView.trailingAnchor.constraint(
             equalTo: contentView.trailingAnchor,
-            constant: 24).isActive = true
+            constant: -24).isActive = true
         let height = UIScreen.main.bounds.height - 200
         NSLayoutConstraint(
             item: descriptionView,
@@ -201,7 +202,7 @@ public class DetailView_LightMode: UIView, DetailViewProtocol {
 public class LightModeDetailViewConfig: InboxViewConfig {
     public override init(lang: String) {
         super.init(lang: lang)
-        style = .lightMode
+        style = .darkMode
     }
 }
 
