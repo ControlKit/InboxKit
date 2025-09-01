@@ -7,7 +7,6 @@
 import Foundation
 import UIKit
 public protocol DetailViewProtocol: UIView {
-    var delegate: DetailDelegate? { get set }
 }
 
 public extension DetailViewProtocol {
