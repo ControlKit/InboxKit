@@ -11,8 +11,6 @@ public class DetailView_DarkMode: UIView, DetailViewProtocol {
     var config: InboxViewConfig
     var viewModel: DetailViewModel
     
-    weak public var delegate: DetailDelegate?
-    
     lazy var contentView: UIView = {
         let contentView = UIView()
         contentView.backgroundColor = config.contentViewBackColor
