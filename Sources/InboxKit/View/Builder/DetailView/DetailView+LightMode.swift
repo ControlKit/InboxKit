@@ -198,14 +198,3 @@ public class DetailView_LightMode: UIView, DetailViewProtocol {
             constant: height).isActive = true
     }
 }
-
-public class LightModeDetailViewConfig: InboxViewConfig {
-    public override init(lang: String) {
-        super.init(lang: lang)
-        style = .darkMode
-        detailPage_TitleColor = .black
-        detailPage_DateColor = UIColor(r: 130, g: 130, b: 130)
-        detailPage_DescriptionColor = UIColor(r: 92, g: 92, b: 92)
-    }
-}
-

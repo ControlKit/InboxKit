@@ -54,6 +54,9 @@ public class DarkModeInboxViewConfig: InboxViewConfig {
     public override init(lang: String) {
         super.init(lang: lang)
         style = .darkMode
+        detailPage_TitleColor = .white
+        detailPage_DateColor = UIColor(r: 121, g: 121, b: 121)
+        detailPage_DescriptionColor = UIColor(r: 167, g: 167, b: 167)
     }
 }
 
