@@ -1,21 +1,21 @@
 //
 //  InboxServiceProtocol.swift
-//
+//  
 //
 //  Created by Maziar Saadatfar on 10/12/23.
 //
 
 import Foundation
-public protocol InboxServiceProtocol {
-    func getInbox(request: InboxRequest) async throws -> InboxResponse?
-}
 
-public class InboxService: InboxServiceProtocol {
+public protocol ActionServiceProtocol {
+    func action(request: ActionRequest) async throws -> ActionResponse?
+}
+public class ActionService: ActionServiceProtocol {
     public init() {}
-    public func getInbox(request: InboxRequest) async throws -> InboxResponse? {
+    public func action(request: ActionRequest) async throws -> ActionResponse? {
         do {
             guard let url = URL(string: request.route) else {
-                return InboxResponse()
+                return ActionResponse()
             }
             var req = URLRequest(url: url)
             req.allHTTPHeaderFields = request.dictionary
@@ -27,7 +27,7 @@ public class InboxService: InboxServiceProtocol {
             if (res as? HTTPURLResponse)?.statusCode == 204 {
                 return nil
             }
-            if let InboxResponse = try? JSONDecoder().decode(InboxResponse.self, from: data) {
+            if let InboxResponse = try? JSONDecoder().decode(ActionResponse.self, from: data) {
                 print(InboxResponse)
                 return InboxResponse
             } else {

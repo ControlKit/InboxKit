@@ -11,9 +11,12 @@ public class InboxViewConfig {
     public init(lang: String) {
         self.lang = lang
     }
+    
     public let lang: String
+    public let rightToLeft: Bool = false
     public var style: InboxViewStyle = .darkMode
     public var contentViewBackColor: UIColor = UIColor(r: 0, g: 0, b: 0, a: 1.0)
+    public var underLineViewColor: UIColor = UIColor(r: 233, g: 233, b: 233, a: 1.0)
     
     public var titleFont = UIFont.systemFont(ofSize: 18, weight: .heavy)
     public var title = "It's an Inbox"
@@ -31,17 +34,17 @@ public class InboxViewConfig {
     public var cell_Date = "date"
     public var cell_DateColor: UIColor = UIColor(r: 213, g: 213, b: 213)
     
-    public var detailPage_TitleFont = UIFont.systemFont(ofSize: 18, weight: .heavy)
-    public var detailPage_Title = "It's an Inbox"
-    public var detailPage_TitleColor: UIColor = UIColor(r: 18, g: 18, b: 18)
+    public var detailPage_TitleFont = UIFont.systemFont(ofSize: 18, weight: .semibold)
+    public var detailPage_Title = "It's an Email"
+    public var detailPage_TitleColor: UIColor = UIColor(r: 0, g: 0, b: 0)
     
-    public var detailPage_DescriptionFont = UIFont.systemFont(ofSize: 18, weight: .heavy)
-    public var detailPage_Description = "It's an Inbox"
-    public var detailPage_DescriptionColor: UIColor = UIColor(r: 18, g: 18, b: 18)
+    public var detailPage_DescriptionFont = UIFont.systemFont(ofSize: 16, weight: .regular)
+    public var detailPage_Description = "It's an description"
+    public var detailPage_DescriptionColor: UIColor = UIColor(r: 92, g: 92, b: 92)
     
-    public var detailPage_DateFont = UIFont.systemFont(ofSize: 18, weight: .heavy)
-    public var detailPage_Date = "It's an Inbox"
-    public var detailPage_DateColor: UIColor = UIColor(r: 18, g: 18, b: 18)
+    public var detailPage_DateFont = UIFont.systemFont(ofSize: 14, weight: .regular)
+    public var detailPage_Date = "Date-x"
+    public var detailPage_DateColor: UIColor = UIColor(r: 130, g: 130, b: 130)
     
     public var cell_ContentViewBGColor: UIColor = UIColor(r: 18, g: 18, b: 18)
     public var cell_separatorColor: UIColor =  UIColor(r: 29, g: 32, b: 37)
