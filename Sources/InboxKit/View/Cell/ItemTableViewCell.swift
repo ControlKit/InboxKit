@@ -26,6 +26,7 @@ class ItemTableViewCell: UITableViewCell,
     func config(item: InboxModel, config: InboxViewConfig) {
         let config = InboxViewPresenter(data: item, config: config).config
         configure(config: config)
+        contentView.checkTheRightToLeft(config: config)
     }
     
     static var reusableId: String {
