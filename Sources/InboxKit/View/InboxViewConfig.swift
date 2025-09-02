@@ -13,7 +13,7 @@ public class InboxViewConfig {
     }
     
     public let lang: String
-    public let rightToLeft: Bool = false
+    public var rightToLeft: Bool = false
     public var style: InboxViewStyle = .darkMode
     public var contentViewBackColor: UIColor = UIColor(r: 0, g: 0, b: 0, a: 1.0)
     public var underLineViewColor: UIColor = UIColor(r: 233, g: 233, b: 233, a: 1.0)
