@@ -21,9 +21,8 @@ public struct InboxViewPresenter {
             self.config.cell_Description = description
         }
         if let date = data?.created_at {
-            let formatedDate = date.formatDate()
-            self.config.cell_Date = formatedDate
-            self.config.detailPage_Date = formatedDate
+            self.config.cell_Date = date.formatDate2()
+            self.config.detailPage_Date = date.formatDate()
         }
     }
     
@@ -44,7 +43,16 @@ extension String {
        let dateFormatterGet = DateFormatter()
        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
        let dateFormatter = DateFormatter()
-       dateFormatter.dateFormat = "yyyy-MM-dd    HH:mm"
+       dateFormatter.dateFormat = "yyyy-MM-dd  HH:mm"
+       let dateObj: Date? = dateFormatterGet.date(from: self)
+
+       return dateFormatter.string(from: dateObj!)
+    }
+    func formatDate2() -> String {
+       let dateFormatterGet = DateFormatter()
+       dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+       let dateFormatter = DateFormatter()
+       dateFormatter.dateFormat = "yyyy-MMM-dd"
        let dateObj: Date? = dateFormatterGet.date(from: self)
 
        return dateFormatter.string(from: dateObj!)
