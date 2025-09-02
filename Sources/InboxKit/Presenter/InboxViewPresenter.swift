@@ -44,7 +44,7 @@ extension String {
        let dateFormatterGet = DateFormatter()
        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
        let dateFormatter = DateFormatter()
-       dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+       dateFormatter.dateFormat = "yyyy-MM-dd    HH:mm"
        let dateObj: Date? = dateFormatterGet.date(from: self)
 
        return dateFormatter.string(from: dateObj!)
