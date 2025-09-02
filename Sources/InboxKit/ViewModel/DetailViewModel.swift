@@ -9,13 +9,14 @@ import UIKit
 
 public protocol DetailViewModel {
     var inboxService: InboxServiceProtocol { get set }
-    var response: InboxResponse? { get set }
+    var itemModel: InboxModel { get set }
 }
 
 public final class DefaultDetailViewModel: DetailViewModel {
-    public var response: InboxResponse?
+    public var itemModel: InboxModel
     public var inboxService: InboxServiceProtocol
-    public init(inboxService: InboxServiceProtocol = InboxService()) {
+    public init(itemModel: InboxModel, inboxService: InboxServiceProtocol = InboxService()) {
         self.inboxService = inboxService
+        self.itemModel = itemModel
     }
 }

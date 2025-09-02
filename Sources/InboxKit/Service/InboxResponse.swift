@@ -16,7 +16,6 @@ public struct InboxModel: Codable {
     public let id: String
     public let title: InboxLocalString?
     public let description: InboxLocalString?
-    public let date: String?
     public let created_at: String?
 }
 public struct InboxLocalizedText: Codable {

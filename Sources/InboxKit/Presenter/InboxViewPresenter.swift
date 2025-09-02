@@ -20,7 +20,7 @@ public struct InboxViewPresenter {
             self.config.detailPage_Description = description
             self.config.cell_Description = description
         }
-        if let date = data?.date { self.config.detailPage_Date = date }
+        if let date = data?.created_at { self.config.detailPage_Date = date }
     }
     
     func getLocalizeString(_ localize: InboxLocalString) -> String? {

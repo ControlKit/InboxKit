@@ -125,7 +125,7 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             constant: 60).isActive = true
         dateLabel.trailingAnchor.constraint(
             equalTo: contentView.trailingAnchor,
-            constant: 42).isActive = true
+            constant: -42).isActive = true
         NSLayoutConstraint(
             item: dateLabel,
             attribute: .height,
@@ -149,7 +149,7 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             constant: 30).isActive = true
         iconImageView.trailingAnchor.constraint(
             equalTo: contentView.trailingAnchor,
-            constant: 24).isActive = true
+            constant: -24).isActive = true
         NSLayoutConstraint(
             item: iconImageView,
             attribute: .height,
