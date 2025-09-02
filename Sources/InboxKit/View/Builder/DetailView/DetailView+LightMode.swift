@@ -22,7 +22,7 @@ public class DetailView_LightMode: UIView, DetailViewProtocol {
         titleLabel.font = config.detailPage_TitleFont
         titleLabel.text = config.detailPage_Title
         titleLabel.textColor = config.detailPage_TitleColor
-        titleLabel.textAlignment = config.rightToLeft ?.right : .left
+        titleLabel.textAlignment = config.rightToLeft ? .right : .left
         titleLabel.numberOfLines = 0
         return titleLabel
     }()
@@ -32,7 +32,7 @@ public class DetailView_LightMode: UIView, DetailViewProtocol {
         dateLabel.font = config.detailPage_DateFont
         dateLabel.text = config.detailPage_Date
         dateLabel.textColor = config.detailPage_DateColor
-        dateLabel.textAlignment = config.rightToLeft ?.right : .left
+        dateLabel.textAlignment = config.rightToLeft ? .right : .left
         dateLabel.numberOfLines = 1
         return dateLabel
     }()
@@ -49,7 +49,7 @@ public class DetailView_LightMode: UIView, DetailViewProtocol {
         descriptionView.font = config.detailPage_DescriptionFont
         descriptionView.text = config.detailPage_Description
         descriptionView.textColor = config.detailPage_DescriptionColor
-        descriptionView.textAlignment = config.rightToLeft ?.right : .left
+        descriptionView.textAlignment = config.rightToLeft ? .right : .left
         descriptionView.backgroundColor = config.contentViewBackColor
         return descriptionView
     }()

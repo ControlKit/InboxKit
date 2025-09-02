@@ -21,10 +21,8 @@ class InboxViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.checkTheRightToLeft(config: config.viewConfig)
         let inboxView = InboxViewStyle.make(viewModel: viewModel,
                                             config: config.viewConfig)
         view.addSubview(inboxView)
@@ -35,21 +33,6 @@ class InboxViewController: UIViewController {
         Task {
             viewModel.response = try await viewModel.inboxService.getInbox(request: viewModel.request)
             inboxView.tableView.reloadData()
-        }
-    }
-}
-
-extension UIView {
-    func viewTransformRightToLeft() {
-        self.transform = CGAffineTransform(scaleX: -1, y: 1)
-        for subview in self.subviews {
-            subview.viewTransformRightToLeft()
-        }
-    }
-    
-    func checkTheRightToLeft(config: InboxViewConfig) {
-        if config.rightToLeft {
-            self.viewTransformRightToLeft()
         }
     }
 }
