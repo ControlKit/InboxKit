@@ -6,6 +6,7 @@
 //
 import Foundation
 import UIKit
+import WebKit
 
 public class DetailView_DarkMode: UIView, DetailViewProtocol {
     var config: InboxViewConfig
@@ -43,15 +44,21 @@ public class DetailView_DarkMode: UIView, DetailViewProtocol {
         return underLineView
     }()
     
-    lazy var descriptionView: UITextView = {
-        let descriptionView = UITextView()
-        descriptionView.isEditable = false
-        descriptionView.font = config.detailPage_DescriptionFont
-        descriptionView.text = config.detailPage_Description
-        descriptionView.textColor = config.detailPage_DescriptionColor
-        descriptionView.textAlignment = config.rightToLeft ?.right : .left
-        descriptionView.backgroundColor = config.contentViewBackColor
-        return descriptionView
+//    lazy var descriptionView: UITextView = {
+//        let descriptionView = UITextView()
+//        descriptionView.isEditable = false
+//        descriptionView.font = config.detailPage_DescriptionFont
+//        descriptionView.text = config.detailPage_Description
+//        descriptionView.textColor = config.detailPage_DescriptionColor
+//        descriptionView.textAlignment = config.rightToLeft ?.right : .left
+//        descriptionView.backgroundColor = config.contentViewBackColor
+//        return descriptionView
+//    }()
+    lazy var descriptionView: WKWebView = {
+        let webView = WKWebView()
+        webView.backgroundColor = config.contentViewBackColor
+        webView.loadHTMLString(config.detailPage_Description, baseURL: nil)
+        return webView
     }()
     
     public override func layoutSubviews() {
