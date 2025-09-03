@@ -200,8 +200,8 @@ public class DetailView_DarkMode: UIView, DetailViewProtocol {
             attribute: .bottom,
             relatedBy: .equal,
             toItem: contentView,
-            attribute: .notAnAttribute,
+            attribute: .bottom,
             multiplier: 1,
-            constant: 80).isActive = true
+            constant: -80).isActive = true
     }
 }
