@@ -7,7 +7,7 @@
 import UIKit
 extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        6
+        viewModel.response?.data?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -26,7 +26,7 @@ extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
     }
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let item = viewModel.response?.data?[0] {
+        if let item = viewModel.response?.data?[indexPath.row] {
             let detailViewModel = DefaultDetailViewModel(itemModel: item, inboxService: viewModel.inboxService)
             let vc = DetailViewController(viewModel: detailViewModel, config: config)
             self.navigationController?.pushViewController(vc, animated: true)

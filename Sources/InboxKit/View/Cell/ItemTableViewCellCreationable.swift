@@ -24,6 +24,7 @@ protocol ItemTableViewCellCreationable {
 extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
     func setupViews() {
         backgroundColor = .clear
+        contentView.backgroundColor = .clear
         addTitleLabel()
         addDescriptionLabel()
         addDateLabel()
