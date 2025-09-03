@@ -24,6 +24,10 @@ public struct InboxViewPresenter {
             self.config.cell_Date = date.formatDate2()
             self.config.detailPage_Date = date.formatDate()
         }
+        
+        if let isHtml = data?.isHtml {
+            self.config.isHtml = isHtml
+        }
     }
     
     func getLocalizeString(_ localize: InboxLocalString) -> String? {

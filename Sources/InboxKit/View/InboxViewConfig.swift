@@ -49,4 +49,5 @@ public class InboxViewConfig {
     public var cell_ContentViewBGColor: UIColor = UIColor(r: 18, g: 18, b: 18)
     public var cell_separatorColor: UIColor =  UIColor(r: 29, g: 32, b: 37)
     public var cell_arrowIconColor: UIColor =  UIColor(r: 29, g: 32, b: 37)
+    public var isHtml = true
 }

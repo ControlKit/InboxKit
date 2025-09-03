@@ -44,21 +44,22 @@ public class DetailView_DarkMode: UIView, DetailViewProtocol {
         return underLineView
     }()
     
-//    lazy var descriptionView: UITextView = {
-//        let descriptionView = UITextView()
-//        descriptionView.isEditable = false
-//        descriptionView.font = config.detailPage_DescriptionFont
-//        descriptionView.text = config.detailPage_Description
-//        descriptionView.textColor = config.detailPage_DescriptionColor
-//        descriptionView.textAlignment = config.rightToLeft ?.right : .left
-//        descriptionView.backgroundColor = config.contentViewBackColor
-//        return descriptionView
-//    }()
-    lazy var descriptionView: WKWebView = {
-        let webView = WKWebView()
-        webView.backgroundColor = config.contentViewBackColor
-        webView.loadHTMLString(config.detailPage_Description, baseURL: nil)
-        return webView
+    lazy var descriptionView: UIView = {
+        if config.isHtml {
+            let webView = WKWebView()
+            webView.backgroundColor = config.contentViewBackColor
+            webView.loadHTMLString(config.detailPage_Description, baseURL: nil)
+            return webView
+        } else {
+            let descriptionView = UITextView()
+            descriptionView.isEditable = false
+            descriptionView.font = config.detailPage_DescriptionFont
+            descriptionView.text = config.detailPage_Description
+            descriptionView.textColor = config.detailPage_DescriptionColor
+            descriptionView.textAlignment = config.rightToLeft ?.right : .left
+            descriptionView.backgroundColor = config.contentViewBackColor
+            return descriptionView
+        }
     }()
     
     public override func layoutSubviews() {
@@ -194,14 +195,13 @@ public class DetailView_DarkMode: UIView, DetailViewProtocol {
         descriptionView.trailingAnchor.constraint(
             equalTo: contentView.trailingAnchor,
             constant: -24).isActive = true
-        let height = UIScreen.main.bounds.height - 200
         NSLayoutConstraint(
             item: descriptionView,
-            attribute: .height,
+            attribute: .bottom,
             relatedBy: .equal,
-            toItem: nil,
+            toItem: contentView,
             attribute: .notAnAttribute,
             multiplier: 1,
-            constant: height).isActive = true
+            constant: 80).isActive = true
     }
 }
