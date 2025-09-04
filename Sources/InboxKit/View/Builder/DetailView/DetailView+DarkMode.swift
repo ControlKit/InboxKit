@@ -48,13 +48,16 @@ public class DetailView_DarkMode: UIView, DetailViewProtocol {
         let descriptionView = UITextView()
         let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
                         NSAttributedString.DocumentType.html]
-        if let data = config.detailPage_Description.data(using: String.Encoding.unicode,
+        if config.detailPage_Description.starts(with: "<"),
+           let data = config.detailPage_Description.data(using: String.Encoding.unicode,
                                                          allowLossyConversion: true) {
             if let attrStr = try? NSAttributedString(
                 data: data,
                 options:options,
                 documentAttributes: nil) {
                 descriptionView.attributedText = attrStr
+            } else {
+                descriptionView.text = config.detailPage_Description
             }
         } else {
             descriptionView.text = config.detailPage_Description
