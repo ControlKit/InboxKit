@@ -44,22 +44,28 @@ public class DetailView_DarkMode: UIView, DetailViewProtocol {
         return underLineView
     }()
     
-    lazy var descriptionView: UIView = {
-        if config.isHtml {
-            let webView = WKWebView()
-            webView.backgroundColor = config.contentViewBackColor
-            webView.loadHTMLString(config.detailPage_Description, baseURL: nil)
-            return webView
+    lazy var descriptionView: UITextView = {
+        let descriptionView = UITextView()
+        let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
+                        NSAttributedString.DocumentType.html]
+        if let data = config.detailPage_Description.data(using: String.Encoding.unicode,
+                                                         allowLossyConversion: true) {
+            if let attrStr = try? NSAttributedString(
+                data: data,
+                options:options,
+                documentAttributes: nil) {
+                descriptionView.attributedText = attrStr
+            }
         } else {
-            let descriptionView = UITextView()
-            descriptionView.isEditable = false
-            descriptionView.font = config.detailPage_DescriptionFont
             descriptionView.text = config.detailPage_Description
-            descriptionView.textColor = config.detailPage_DescriptionColor
-            descriptionView.textAlignment = config.rightToLeft ?.right : .left
-            descriptionView.backgroundColor = config.contentViewBackColor
-            return descriptionView
         }
+        
+        descriptionView.isEditable = false
+        descriptionView.font = config.detailPage_DescriptionFont
+        descriptionView.textColor = config.detailPage_DescriptionColor
+        descriptionView.textAlignment = config.rightToLeft ?.right : .left
+        descriptionView.backgroundColor = config.contentViewBackColor
+        return descriptionView
     }()
     
     public override func layoutSubviews() {
