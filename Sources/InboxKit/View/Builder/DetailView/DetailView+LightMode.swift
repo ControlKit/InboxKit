@@ -109,7 +109,7 @@ public class DetailView_LightMode: UIView, DetailViewProtocol {
         NSLayoutConstraint(
             item: titleLabel,
             attribute: .height,
-            relatedBy: .greaterThanOrEqual,
+            relatedBy: .equal,
             toItem: nil,
             attribute: .notAnAttribute,
             multiplier: 1,

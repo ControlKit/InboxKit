@@ -126,7 +126,7 @@ public class DetailView_DarkMode: UIView, DetailViewProtocol {
         NSLayoutConstraint(
             item: titleLabel,
             attribute: .height,
-            relatedBy: .greaterThanOrEqual,
+            relatedBy: .equal,
             toItem: nil,
             attribute: .notAnAttribute,
             multiplier: 1,
