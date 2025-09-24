@@ -11,7 +11,7 @@ public struct InboxRequest {
     public var route: String
     public var lastInboxId: String = UserDefaults.standard.string(forKey: String.Key.inboxId.rawValue) ?? String("1")
     public var deviceUUID: String = UUID().uuidString
-    public var sdkVersion: String = "1.0.0"
+    public var sdkVersion: String = inboxKit_Version
     
     var dictionary: [String: String] {
         return ["x-app-id": appId,

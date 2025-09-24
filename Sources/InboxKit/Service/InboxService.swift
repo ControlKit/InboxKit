@@ -27,9 +27,9 @@ public class InboxService: InboxServiceProtocol {
             if (res as? HTTPURLResponse)?.statusCode == 204 {
                 return nil
             }
-            if let InboxResponse = try? JSONDecoder().decode(InboxResponse.self, from: data) {
-                print(InboxResponse)
-                return InboxResponse
+            if let response = try? JSONDecoder().decode(InboxResponse.self, from: data) {
+                print(response)
+                return response
             } else {
                 print("Invalid Response")
                 return nil

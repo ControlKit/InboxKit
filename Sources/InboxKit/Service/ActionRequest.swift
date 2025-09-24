@@ -9,7 +9,7 @@ public struct ActionRequest {
     public var appId: String = Bundle.main.bundleIdentifier ?? String()
     public var route: String
     public var deviceUUID: String = UUID().uuidString
-    public var sdkVersion: String = "1.0.0"
+    public var sdkVersion: String = inboxKit_Version
     
     var dictionary: [String: String] {
         return ["x-app-id": appId,
