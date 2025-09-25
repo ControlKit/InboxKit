@@ -7,8 +7,9 @@
 
 import Foundation
 public struct InboxRequest {
-    public var appId: String = Bundle.main.bundleIdentifier ?? String()
+    public var appId: String
     public var route: String
+    public var applicationVersion: String = Bundle.main.releaseVersionNumber ?? String()
     public var lastInboxId: String = UserDefaults.standard.string(forKey: String.Key.inboxId.rawValue) ?? String("1")
     public var deviceUUID: String = UUID().uuidString
     public var sdkVersion: String = inboxKit_Version
@@ -17,7 +18,7 @@ public struct InboxRequest {
         return ["x-app-id": appId,
                 "x-last-id": lastInboxId,
                 "x-sdk-version": sdkVersion,
-                "x-version": "1",
+                "x-version": applicationVersion,
                 "x-device-uuid": deviceUUID]
     }
     
