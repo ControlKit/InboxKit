@@ -54,7 +54,6 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
         img.image = ImageHelper.image("arrow")
         return img
     }
-    
     func addTitleLabel() {
         contentView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -141,7 +140,6 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             multiplier: 1,
             constant: 80).isActive = true
     }
-    
     func addIcon() {
         contentView.addSubview(iconImageView)
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -181,7 +179,6 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             multiplier: 1,
             constant: 8.0).isActive = true
     }
-    
     func configure(config: InboxViewConfig) {
         titleLabel.text = config.cell_Title
         titleLabel.font = config.cell_TitleFont
