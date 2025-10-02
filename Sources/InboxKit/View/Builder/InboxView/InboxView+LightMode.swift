@@ -12,6 +12,15 @@ public class InboxView_LightMode: UIView, InboxViewProtocol {
     var viewModel: InboxViewModel
     
     weak public var delegate: InboxDelegate?
+    lazy var titleLabel: UILabel = {
+        let titleLabel = UILabel()
+        titleLabel.font = config.titleFont
+        titleLabel.text = config.title
+        titleLabel.textColor = config.titleColor
+        titleLabel.textAlignment = config.rightToLeft ?.right : .left
+        titleLabel.numberOfLines = 0
+        return titleLabel
+    }()
     public lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = config.contentViewBackColor
@@ -35,13 +44,62 @@ public class InboxView_LightMode: UIView, InboxViewProtocol {
     }
     
     public func commonInit() {
-        tableView.fixInView(self)
     }
     
     public func setup() {
+        addSubview(titleLabel)
         addSubview(tableView)
-        tableView.fixInView(self)
         commonInit()
+        setTitleLabelConstraint()
+        setTableViewConstraint()
+    }
+    
+    func setTitleLabelConstraint() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(
+            item: titleLabel,
+            attribute: .top,
+            relatedBy: .equal,
+            toItem: self,
+            attribute: .bottom,
+            multiplier: 1,
+            constant: 80).isActive = true
+        titleLabel.leadingAnchor.constraint(
+            equalTo: self.leadingAnchor,
+            constant: 24).isActive = true
+        titleLabel.trailingAnchor.constraint(
+            equalTo: self.trailingAnchor,
+            constant: 24).isActive = true
+        NSLayoutConstraint(
+            item: titleLabel,
+            attribute: .height,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 1,
+            constant: 23).isActive = true
+    }
+    
+    func setTableViewConstraint() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(
+            item: tableView,
+            attribute: .top,
+            relatedBy: .equal,
+            toItem: titleLabel,
+            attribute: .bottom,
+            multiplier: 1,
+            constant: 24).isActive = true
+        tableView.leadingAnchor.constraint(
+            equalTo: self.leadingAnchor,
+            constant: 0).isActive = true
+        tableView.trailingAnchor.constraint(
+            equalTo: self.trailingAnchor,
+            constant: 0).isActive = true
+        
+        tableView.bottomAnchor.constraint(
+            equalTo: self.bottomAnchor,
+            constant: 0).isActive = true
     }
 }
 
@@ -49,6 +107,7 @@ public class LightModeInboxViewConfig: InboxViewConfig {
     public override init(lang: String) {
         super.init(lang: lang)
         style = .lightMode
+        titleColor = .black
         contentViewBackColor = .white
         detailPage_TitleColor = .black
         detailPage_DateColor = UIColor(r: 130, g: 130, b: 130)

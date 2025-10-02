@@ -18,9 +18,9 @@ public class InboxViewConfig {
     public var contentViewBackColor: UIColor = UIColor(r: 0, g: 0, b: 0, a: 1.0)
     public var underLineViewColor: UIColor = UIColor(r: 233, g: 233, b: 233, a: 1.0)
     
-    public var titleFont = UIFont.systemFont(ofSize: 18, weight: .heavy)
-    public var title = "It's an Inbox"
-    public var titleColor: UIColor = UIColor(r: 18, g: 18, b: 18)
+    public var titleFont = UIFont.systemFont(ofSize: 24, weight: .heavy)
+    public var title = "Inbox"
+    public var titleColor: UIColor = .white
     
     public var cell_TitleFont = UIFont.systemFont(ofSize: 15, weight: .semibold)
     public var cell_Title = "It's an Inbox"
