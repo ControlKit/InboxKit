@@ -45,11 +45,27 @@ public class DetailView_LightMode: UIView, DetailViewProtocol {
     
     lazy var descriptionView: UITextView = {
         let descriptionView = UITextView()
+        let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
+                        NSAttributedString.DocumentType.html]
+        if config.detailPage_Description.starts(with: "<"),
+           let data = config.detailPage_Description.data(using: String.Encoding.unicode,
+                                                         allowLossyConversion: true) {
+            if let attrStr = try? NSAttributedString(
+                data: data,
+                options:options,
+                documentAttributes: nil) {
+                descriptionView.attributedText = attrStr
+            } else {
+                descriptionView.text = config.detailPage_Description
+            }
+        } else {
+            descriptionView.text = config.detailPage_Description
+        }
+        
         descriptionView.isEditable = false
         descriptionView.font = config.detailPage_DescriptionFont
-        descriptionView.text = config.detailPage_Description
         descriptionView.textColor = config.detailPage_DescriptionColor
-        descriptionView.textAlignment = config.rightToLeft ? .right : .left
+        descriptionView.textAlignment = config.rightToLeft ?.right : .left
         descriptionView.backgroundColor = config.contentViewBackColor
         return descriptionView
     }()
@@ -63,6 +79,7 @@ public class DetailView_LightMode: UIView, DetailViewProtocol {
                          config: InboxViewConfig) {
         self.config = config
         self.viewModel = viewModel
+        self.config = InboxViewPresenter(data: viewModel.itemModel, config: config).config
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         setup()
     }

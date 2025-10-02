@@ -6,8 +6,6 @@
 //
 import Foundation
 import UIKit
-import WebKit
-
 public class DetailView_DarkMode: UIView, DetailViewProtocol {
     var config: InboxViewConfig
     var viewModel: DetailViewModel
@@ -80,6 +78,7 @@ public class DetailView_DarkMode: UIView, DetailViewProtocol {
                          config: InboxViewConfig) {
         self.config = config
         self.viewModel = viewModel
+        self.config = InboxViewPresenter(data: viewModel.itemModel, config: config).config
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         setup()
     }
