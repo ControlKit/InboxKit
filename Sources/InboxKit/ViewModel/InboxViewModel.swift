@@ -27,7 +27,6 @@ public final class DefaultInboxViewModel: InboxViewModel, Inboxable {
     
     public var request: InboxRequest {
         return InboxRequest(appId: serviceConfig.appId,
-                                   route: serviceConfig.route,
-                                   sdkVersion: serviceConfig.sdkVersion)
+                            sdkVersion: serviceConfig.sdkVersion)
     }
 }
