@@ -123,10 +123,7 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             toItem: titleLabel,
             attribute: .right,
             multiplier: 1,
-            constant: 60).isActive = true
-        dateLabel.trailingAnchor.constraint(
-            equalTo: contentView.trailingAnchor,
-            constant: -42).isActive = true
+            constant: 20).isActive = true
         NSLayoutConstraint(
             item: dateLabel,
             attribute: .height,
@@ -135,6 +132,14 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             attribute: .notAnAttribute,
             multiplier: 1,
             constant: 20).isActive = true
+        NSLayoutConstraint(
+            item: dateLabel,
+            attribute: .width,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 1,
+            constant: 80).isActive = true
     }
     
     func addIcon() {
@@ -148,6 +153,14 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             attribute: .top,
             multiplier: 1,
             constant: 30).isActive = true
+        NSLayoutConstraint(
+            item: iconImageView,
+            attribute: .left,
+            relatedBy: .equal,
+            toItem: dateLabel,
+            attribute: .right,
+            multiplier: 1,
+            constant: 10).isActive = true
         iconImageView.trailingAnchor.constraint(
             equalTo: contentView.trailingAnchor,
             constant: -24).isActive = true
