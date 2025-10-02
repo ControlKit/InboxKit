@@ -56,5 +56,6 @@ public class LightModeInboxViewConfig: InboxViewConfig {
         cell_DescriptionColor = UIColor(r: 130, g: 130, b: 130)
         cell_DateColor = UIColor(r: 130, g: 130, b: 130)
         cell_arrowIconColor = UIColor(r: 130, g: 130, b: 130)
+        cell_TitleColor = UIColor(r: 5, g: 95, b: 201)
     }
 }

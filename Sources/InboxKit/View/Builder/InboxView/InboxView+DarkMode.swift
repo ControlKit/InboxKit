@@ -58,6 +58,7 @@ public class DarkModeInboxViewConfig: InboxViewConfig {
         detailPage_DateColor = UIColor(r: 121, g: 121, b: 121)
         detailPage_DescriptionColor = UIColor(r: 167, g: 167, b: 167)
         cell_DescriptionColor = UIColor(r: 213, g: 213, b: 213)
+        cell_TitleColor = UIColor(r: 81, g: 181, b: 254)
         cell_DateColor = UIColor(r: 213, g: 213, b: 213)
         cell_arrowIconColor = UIColor(r: 213, g: 213, b: 213)
     }
