@@ -61,7 +61,7 @@ public class InboxView_LightMode: UIView, InboxViewProtocol {
             attribute: .top,
             relatedBy: .equal,
             toItem: self,
-            attribute: .bottom,
+            attribute: .top,
             multiplier: 1,
             constant: 80).isActive = true
         titleLabel.leadingAnchor.constraint(
