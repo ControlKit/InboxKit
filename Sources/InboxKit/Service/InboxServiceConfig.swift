@@ -14,10 +14,11 @@ public struct InboxServiceConfig {
         self.viewConfig = InboxViewStyle.getViewConfigWithStyle(style: style, lang: language)
         self.appId = appId
         self.version = version
+        self.language = language
     }
-    public var route: String = "https://tauri.ir/api/inbox-view"
-    public var appId: String = "9fb42682-ebd0-4553-a131-2620ca7f2f63" //Bundle.main.bundleIdentifier ?? String()
-    public var version: String = "1"//Bundle.main.releaseVersionNumber ?? String()
-    public var sdkVersion: String = "1.0.0"
+    public var appId: String
+    public var version: String
+    public var language: String
+    public var sdkVersion: String = inboxKit_Version
     public var viewConfig: InboxViewConfig
 }
