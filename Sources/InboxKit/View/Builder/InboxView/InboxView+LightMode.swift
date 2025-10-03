@@ -12,7 +12,7 @@ public class InboxView_LightMode: UIView, InboxViewProtocol {
     var viewModel: InboxViewModel
     
     weak public var delegate: InboxDelegate?
-    lazy var titleLabel: UILabel = {
+    public lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = config.titleFont
         titleLabel.text = config.title
