@@ -5,8 +5,12 @@
 //  Created by Maziar Saadatfar on 10/3/25.
 //
 import UIKit
+protocol EmptyStateDelegate: AnyObject {
+    func didTapBack()
+}
 public class InoxViewEmptyState_LightMode: UIView {
     var config: InboxViewConfig
+    weak var delegate: EmptyStateDelegate?
     public required init(config: InboxViewConfig) {
         self.config = LightModeEmptyInboxViewConfig(lang: config.lang)
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
@@ -42,6 +46,20 @@ public class InoxViewEmptyState_LightMode: UIView {
         descriptionLabel.numberOfLines = 0
         return descriptionLabel
     }()
+    
+    lazy var button: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = config.emptyState_ButtonBackColor
+        button.titleLabel?.textColor = config.emptyState_ButtonTitleColor
+        button.setTitle(config.emptyState_ButtonNormalTitle, for: .normal)
+        button.setCurvedView(cornerRadius: config.emptyState_ButtonCornerRadius,
+                             borderWidth: config.emptyState_ButtonBorderWidth,
+                             borderColor: config.emptyState_ButtonBorderColor)
+        button.addTarget(self, action: #selector(backNavigate), for: .touchUpInside)
+        button.titleLabel?.font = config.emptyState_ButtonFont
+        button.setTitleColor(config.emptyState_ButtonTitleColor, for: .normal)
+        return button
+    }()
     public func commonInit() {
     }
     
@@ -49,10 +67,12 @@ public class InoxViewEmptyState_LightMode: UIView {
         addSubview(imageView)
         addSubview(titleLabel)
         addSubview(descriptionLabel)
+        addSubview(button)
         commonInit()
         setImageViewConstraint()
         setTitleLabelConstraint()
         setDescriptionLabelConstraint()
+        setButtonConstraint()
     }
     
     func setImageViewConstraint() {
@@ -114,7 +134,7 @@ public class InoxViewEmptyState_LightMode: UIView {
             constant: 24).isActive = true
         titleLabel.trailingAnchor.constraint(
             equalTo: self.trailingAnchor,
-            constant: 24).isActive = true
+            constant: -24).isActive = true
         NSLayoutConstraint(
             item: titleLabel,
             attribute: .height,
@@ -137,10 +157,10 @@ public class InoxViewEmptyState_LightMode: UIView {
             constant: 18).isActive = true
         descriptionLabel.leadingAnchor.constraint(
             equalTo: self.leadingAnchor,
-            constant: 0).isActive = true
+            constant: 24).isActive = true
         descriptionLabel.trailingAnchor.constraint(
             equalTo: self.trailingAnchor,
-            constant: 0).isActive = true
+            constant: -24).isActive = true
         NSLayoutConstraint(
             item: descriptionLabel,
             attribute: .height,
@@ -149,6 +169,48 @@ public class InoxViewEmptyState_LightMode: UIView {
             attribute: .notAnAttribute,
             multiplier: 1,
             constant: 23).isActive = true
+    }
+    
+    
+    public func setButtonConstraint() {
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(
+            item: button,
+            attribute: .centerX,
+            relatedBy: .equal,
+            toItem: self,
+            attribute: .centerX,
+            multiplier: 1,
+            constant: 0).isActive = true
+        NSLayoutConstraint(
+            item: button,
+            attribute: .top,
+            relatedBy: .equal,
+            toItem: descriptionLabel,
+            attribute: .bottom,
+            multiplier: 1,
+            constant: 53).isActive = true
+        NSLayoutConstraint(
+            item: button,
+            attribute: .width,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: NSLayoutConstraint.Attribute.notAnAttribute,
+            multiplier: 1,
+            constant: 250).isActive = true
+        NSLayoutConstraint(
+            item: button,
+            attribute: .height,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 1,
+            constant: 52).isActive = true
+    }
+
+    @objc
+    func backNavigate() {
+        delegate?.didTapBack()
     }
 }
 

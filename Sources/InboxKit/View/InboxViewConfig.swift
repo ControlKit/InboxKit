@@ -59,4 +59,12 @@ public class InboxViewConfig {
     public var emptyState_DescriptionColor: UIColor = UIColor(r: 84, g: 84, b: 84)
     
     public var emptyState_ImageColor: UIColor?
+    
+    public var emptyState_ButtonFont = UIFont.systemFont(ofSize: 18, weight: .semibold)
+    public var emptyState_ButtonNormalTitle: String = "Back"
+    public var emptyState_ButtonBackColor: UIColor = UIColor(r: 145, g: 145, b: 145)
+    public var emptyState_ButtonTitleColor: UIColor = .white
+    public var emptyState_ButtonCornerRadius: CGFloat = 20.0
+    public var emptyState_ButtonBorderWidth: CGFloat = 0.0
+    public var emptyState_ButtonBorderColor: UIColor = .clear
 }
