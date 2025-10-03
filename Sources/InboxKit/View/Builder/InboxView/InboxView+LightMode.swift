@@ -58,7 +58,7 @@ public class InboxView_LightMode: UIView, InboxViewProtocol {
         addSubview(tableView)
         commonInit()
         setTitleLabelConstraint()
-        emptyStateView.fixInView(self)
+        setEmptyStateConstraint()
         setTableViewConstraint()
     }
     
@@ -86,6 +86,27 @@ public class InboxView_LightMode: UIView, InboxViewProtocol {
             attribute: .notAnAttribute,
             multiplier: 1,
             constant: 23).isActive = true
+    }
+    
+    func setEmptyStateConstraint() {
+        emptyStateView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(
+            item: emptyStateView,
+            attribute: .top,
+            relatedBy: .equal,
+            toItem: titleLabel,
+            attribute: .bottom,
+            multiplier: 1,
+            constant: 30).isActive = true
+        emptyStateView.leadingAnchor.constraint(
+            equalTo: self.leadingAnchor,
+            constant: 0).isActive = true
+        emptyStateView.trailingAnchor.constraint(
+            equalTo: self.trailingAnchor,
+            constant: 0).isActive = true
+        emptyStateView.bottomAnchor.constraint(
+            equalTo: self.bottomAnchor,
+            constant: 0).isActive = true
     }
     
     func setTableViewConstraint() {

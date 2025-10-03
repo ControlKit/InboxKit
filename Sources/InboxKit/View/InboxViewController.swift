@@ -41,9 +41,5 @@ class InboxViewController: UIViewController {
             }
             inboxView.tableView.reloadData()
         }
-        
-        edgesForExtendedLayout = [.top,.bottom]
-        navigationController?.navigationBar.isTranslucent = true
-        extendedLayoutIncludesOpaqueBars = true
     }
 }
