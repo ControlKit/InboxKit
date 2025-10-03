@@ -53,6 +53,7 @@ public class InboxView_LightMode: UIView, InboxViewProtocol {
     }
     
     public func setup() {
+        backgroundColor = config.contentViewBackColor
         addSubview(titleLabel)
         addSubview(emptyStateView)
         addSubview(tableView)
