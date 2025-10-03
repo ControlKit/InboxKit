@@ -67,6 +67,7 @@ public class InoxViewEmptyState_DarkMode: UIView {
         addSubview(imageView)
         addSubview(titleLabel)
         addSubview(descriptionLabel)
+        addSubview(button)
         commonInit()
         setImageViewConstraint()
         setTitleLabelConstraint()
