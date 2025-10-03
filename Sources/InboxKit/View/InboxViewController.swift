@@ -32,6 +32,13 @@ class InboxViewController: UIViewController {
         inboxView.tableView.delegate = self
         Task {
             viewModel.response = try await viewModel.inboxService.getInbox(request: viewModel.request)
+            if viewModel.response?.data?.count ?? 0 <= 0 {
+                DispatchQueue.main.async {
+                    inboxView.emptyStateView.isHidden = true
+                }
+            } else {
+                inboxView.emptyStateView.isHidden = false
+            }
             inboxView.tableView.reloadData()
         }
     }

@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 public protocol InboxViewProtocol: UIView {
     var tableView: UITableView { get set }
+    var titleLabel: UILabel { get set }
+    var emptyStateView: UIView { get set }
 }
 
 public extension InboxViewProtocol {

@@ -27,6 +27,12 @@ public class InboxView_LightMode: UIView, InboxViewProtocol {
         return tableView
     }()
     
+    public lazy var emptyStateView: UIView = {
+        let emptyState = InoxViewEmptyState_LightMode(config: config)
+        emptyState.backgroundColor = .clear
+        return emptyState
+    }()
+    
     public override func layoutSubviews() {
         super.layoutSubviews()
     }
@@ -48,9 +54,11 @@ public class InboxView_LightMode: UIView, InboxViewProtocol {
     
     public func setup() {
         addSubview(titleLabel)
+        addSubview(emptyStateView)
         addSubview(tableView)
         commonInit()
         setTitleLabelConstraint()
+        emptyStateView.fixInView(self)
         setTableViewConstraint()
     }
     

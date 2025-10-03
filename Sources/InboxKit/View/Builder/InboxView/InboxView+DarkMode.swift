@@ -17,7 +17,7 @@ public class InboxView_DarkMode: UIView, InboxViewProtocol {
     var viewModel: InboxViewModel
     
     weak public var delegate: InboxDelegate?
-    lazy var titleLabel: UILabel = {
+    public lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = config.titleFont
         titleLabel.text = config.title
@@ -30,6 +30,12 @@ public class InboxView_DarkMode: UIView, InboxViewProtocol {
         let tableView = UITableView()
         tableView.backgroundColor = config.contentViewBackColor
         return tableView
+    }()
+    
+    public lazy var emptyStateView: UIView = {
+        let emptyState = InoxViewEmptyState_DarkMode(config: config)
+        emptyState.backgroundColor = .clear
+        return emptyState
     }()
     
     public override func layoutSubviews() {
@@ -53,9 +59,11 @@ public class InboxView_DarkMode: UIView, InboxViewProtocol {
     
     public func setup() {
         addSubview(titleLabel)
+        addSubview(emptyStateView)
         addSubview(tableView)
         commonInit()
         setTitleLabelConstraint()
+        emptyStateView.fixInView(self)
         setTableViewConstraint()
     }
     

@@ -49,4 +49,14 @@ public class InboxViewConfig {
     public var cell_ContentViewBGColor: UIColor = UIColor(r: 18, g: 18, b: 18)
     public var cell_separatorColor: UIColor =  UIColor(r: 29, g: 32, b: 37)
     public var cell_arrowIconColor: UIColor =  UIColor(r: 29, g: 32, b: 37)
+    
+    public var emptyState_titleFont = UIFont.systemFont(ofSize: 18, weight: .semibold)
+    public var emptyState_title = "YOU HAVE NO MESSAGES"
+    public var emptyState_titleColor: UIColor = UIColor(r: 84, g: 84, b: 84)
+    
+    public var emptyState_DescriptionFont = UIFont.systemFont(ofSize: 18, weight: .regular)
+    public var emptyState_Description = "Your inbox is empty."
+    public var emptyState_DescriptionColor: UIColor = UIColor(r: 84, g: 84, b: 84)
+    
+    public var emptyState_ImageColor: UIColor?
 }
