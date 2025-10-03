@@ -58,6 +58,7 @@ public class InboxView_DarkMode: UIView, InboxViewProtocol {
     }
     
     public func setup() {
+        backgroundColor = config.contentViewBackColor
         addSubview(titleLabel)
         addSubview(emptyStateView)
         addSubview(tableView)
