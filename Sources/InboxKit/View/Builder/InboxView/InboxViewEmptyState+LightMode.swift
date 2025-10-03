@@ -72,7 +72,7 @@ public class InoxViewEmptyState_LightMode: UIView {
             toItem: titleLabel,
             attribute: .top,
             multiplier: 1,
-            constant: 45).isActive = true
+            constant: -45).isActive = true
         NSLayoutConstraint(
             item: imageView,
             attribute: .height,

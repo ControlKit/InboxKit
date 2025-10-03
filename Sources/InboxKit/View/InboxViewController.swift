@@ -34,10 +34,10 @@ class InboxViewController: UIViewController {
             viewModel.response = try await viewModel.inboxService.getInbox(request: viewModel.request)
             if viewModel.response?.data?.count ?? 0 <= 0 {
                 DispatchQueue.main.async {
-                    inboxView.emptyStateView.isHidden = true
+                    inboxView.emptyStateView.isHidden = false
                 }
             } else {
-                inboxView.emptyStateView.isHidden = false
+                inboxView.emptyStateView.isHidden = true
             }
             inboxView.tableView.reloadData()
         }
