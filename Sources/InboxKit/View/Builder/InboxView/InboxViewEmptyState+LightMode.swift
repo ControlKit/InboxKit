@@ -8,7 +8,7 @@ import UIKit
 protocol EmptyStateDelegate: AnyObject {
     func didTapBack()
 }
-public class InoxViewEmptyState_LightMode: UIView {
+public class InboxViewEmptyState_LightMode: UIView {
     var config: InboxViewConfig
     weak var delegate: EmptyStateDelegate?
     public required init(config: InboxViewConfig) {

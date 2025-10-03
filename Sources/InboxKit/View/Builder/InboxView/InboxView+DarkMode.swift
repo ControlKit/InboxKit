@@ -12,7 +12,7 @@ public protocol InboxDelegate: AnyObject {
     func dismiss()
 }
 
-public class InboxView_DarkMode: UIView, InboxViewProtocol {
+public class InboxView_DarkMode: UIView, InboxViewProtocol, EmptyStateDelegate {
     var config: InboxViewConfig
     var viewModel: InboxViewModel
     
@@ -35,6 +35,7 @@ public class InboxView_DarkMode: UIView, InboxViewProtocol {
     public lazy var emptyStateView: UIView = {
         let emptyState = InoxViewEmptyState_DarkMode(config: config)
         emptyState.backgroundColor = .clear
+        emptyState.delegate = self
         return emptyState
     }()
     
@@ -135,6 +136,10 @@ public class InboxView_DarkMode: UIView, InboxViewProtocol {
         tableView.bottomAnchor.constraint(
             equalTo: self.bottomAnchor,
             constant: 0).isActive = true
+    }
+    
+    func didTapBack() {
+        delegate?.dismiss()
     }
 }
 

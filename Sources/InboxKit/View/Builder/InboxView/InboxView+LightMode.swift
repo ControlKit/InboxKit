@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-public class InboxView_LightMode: UIView, InboxViewProtocol {
+public class InboxView_LightMode: UIView, InboxViewProtocol, EmptyStateDelegate {
     var config: InboxViewConfig
     var viewModel: InboxViewModel
     
@@ -28,7 +28,8 @@ public class InboxView_LightMode: UIView, InboxViewProtocol {
     }()
     
     public lazy var emptyStateView: UIView = {
-        let emptyState = InoxViewEmptyState_LightMode(config: config)
+        let emptyState = InboxViewEmptyState_LightMode(config: config)
+        emptyState.delegate = self
         emptyState.backgroundColor = .clear
         return emptyState
     }()
@@ -130,6 +131,10 @@ public class InboxView_LightMode: UIView, InboxViewProtocol {
         tableView.bottomAnchor.constraint(
             equalTo: self.bottomAnchor,
             constant: 0).isActive = true
+    }
+    
+    func didTapBack() {
+        delegate?.dismiss()
     }
 }
 

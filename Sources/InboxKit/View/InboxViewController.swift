@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InboxViewController: UIViewController {
+class InboxViewController: UIViewController, InboxDelegate {
     var viewModel: InboxViewModel
     let config: InboxServiceConfig
 
@@ -30,6 +30,7 @@ class InboxViewController: UIViewController {
         ItemTableViewCell.register(in: inboxView.tableView)
         inboxView.tableView.dataSource = self
         inboxView.tableView.delegate = self
+        inboxView.delegate = self
         Task {
             viewModel.response = try await viewModel.inboxService.getInbox(request: viewModel.request)
             if viewModel.response?.data?.count ?? 0 <= 0 {
@@ -43,5 +44,8 @@ class InboxViewController: UIViewController {
             }
             inboxView.tableView.reloadData()
         }
+    }
+    func dismiss() {
+        self.navigationController?.dismiss(animated: true)
     }
 }
