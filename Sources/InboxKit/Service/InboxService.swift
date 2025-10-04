@@ -25,17 +25,19 @@ public class InboxService: InboxServiceProtocol {
             )
             let (data, res) = try await URLSession.shared.data(for: req)
             if (res as? HTTPURLResponse)?.statusCode == 204 {
+                print("Inbox Response --> 204")
                 return nil
             }
             if let response = try? JSONDecoder().decode(InboxResponse.self, from: data) {
+                print("Inbox Response --> 200")
                 print(response)
                 return response
             } else {
-                print("Invalid Response")
+                print("Inbox Response --> Decode Error")
                 return nil
             }
         } catch {
-            print("Failed to Send POST Request \(error)")
+            print("Failed to Inbox Request \(error)")
             return nil
         }
     }

@@ -25,17 +25,19 @@ public class ActionService: ActionServiceProtocol {
             )
             let (data, res) = try await URLSession.shared.data(for: req)
             if (res as? HTTPURLResponse)?.statusCode == 204 {
+                print("Inbox Action Response --> 204")
                 return nil
             }
             if let InboxResponse = try? JSONDecoder().decode(ActionResponse.self, from: data) {
+                print("Inbox Action Response --> 200")
                 print(InboxResponse)
                 return InboxResponse
             } else {
-                print("Invalid Response")
+                print("Inbox Action Response --> Decode Error")
                 return nil
             }
         } catch {
-            print("Failed to Send POST Request \(error)")
+            print("Failed to Send POST Inbox Action Request \(error)")
             return nil
         }
     }
