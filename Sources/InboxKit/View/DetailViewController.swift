@@ -31,5 +31,6 @@ class DetailViewController: UIViewController {
                                                    config: config)
         view.addSubview(inboxView)
         inboxView.fixInView(view)
+        viewModel.setAction(.view)
     }
 }

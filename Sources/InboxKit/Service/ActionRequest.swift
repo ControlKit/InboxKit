@@ -6,8 +6,10 @@
 //
 import Foundation
 public struct ActionRequest {
-    public var appId: String = Bundle.main.bundleIdentifier ?? String()
-    public var route: String
+    public var appId: String
+    public var itemId: String
+    public var action: InboxAction
+    public var route: String = "https://tauri.ir/api/inbox-view/"
     public var deviceUUID: String = UUID().uuidString
     public var sdkVersion: String = inboxKit_Version
     
@@ -18,7 +20,11 @@ public struct ActionRequest {
                 "x-device-uuid": deviceUUID]
     }
     
-    var nsDictionary: NSDictionary {
-        return dictionary as NSDictionary
+    var params: [String: String] {
+        return ["action": action.rawValue]
     }
+}
+
+public enum InboxAction: String {
+    case view = "VIEW"
 }

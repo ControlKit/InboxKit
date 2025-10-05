@@ -27,7 +27,10 @@ extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let item = viewModel.response?.data?[indexPath.row] {
-            let detailViewModel = DefaultDetailViewModel(itemModel: item, inboxService: viewModel.inboxService)
+            let detailViewModel = DefaultDetailViewModel(
+                itemModel: item,
+                serviceConfig: config
+            )
             let vc = DetailViewController(viewModel: detailViewModel, config: config)
             self.navigationController?.pushViewController(vc, animated: true)
         }

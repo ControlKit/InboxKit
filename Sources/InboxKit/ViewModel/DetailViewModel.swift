@@ -7,16 +7,23 @@
 import Foundation
 import UIKit
 
-public protocol DetailViewModel {
-    var inboxService: InboxServiceProtocol { get set }
+public protocol DetailViewModel: InboxActionable {
+    var actionService: ActionServiceProtocol { get set }
+    var serviceConfig: InboxServiceConfig { get set }
     var itemModel: InboxModel { get set }
 }
 
 public final class DefaultDetailViewModel: DetailViewModel {
     public var itemModel: InboxModel
-    public var inboxService: InboxServiceProtocol
-    public init(itemModel: InboxModel, inboxService: InboxServiceProtocol = InboxService()) {
-        self.inboxService = inboxService
+    public var actionService: ActionServiceProtocol
+    public var serviceConfig: InboxServiceConfig
+    public init(
+        itemModel: InboxModel,
+        serviceConfig: InboxServiceConfig,
+        actionService: ActionServiceProtocol = ActionService()
+    ) {
+        self.actionService = actionService
+        self.serviceConfig = serviceConfig
         self.itemModel = itemModel
     }
 }
