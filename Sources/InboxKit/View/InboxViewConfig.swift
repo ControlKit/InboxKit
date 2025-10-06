@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 public class InboxViewConfig {
-    public init(lang: String) {
+    public init(lang: CKLanguage) {
         self.lang = lang
     }
     
-    public let lang: String
+    public let lang: CKLanguage
     public var rightToLeft: Bool = false
     public var style: InboxViewStyle = .darkMode
     public var contentViewBackColor: UIColor = UIColor(r: 0, g: 0, b: 0, a: 1.0)

@@ -139,7 +139,7 @@ public class InboxView_LightMode: UIView, InboxViewProtocol, EmptyStateDelegate 
 }
 
 public class LightModeInboxViewConfig: InboxViewConfig {
-    public override init(lang: String) {
+    public override init(lang: CKLanguage) {
         super.init(lang: lang)
         style = .lightMode
         titleColor = .black

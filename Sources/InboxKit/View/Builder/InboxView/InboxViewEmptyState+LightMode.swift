@@ -215,7 +215,7 @@ public class InboxViewEmptyState_LightMode: UIView {
 }
 
 public class LightModeEmptyInboxViewConfig: InboxViewConfig {
-    public override init(lang: String) {
+    public override init(lang: CKLanguage) {
         super.init(lang: lang)
         style = .lightMode
     }

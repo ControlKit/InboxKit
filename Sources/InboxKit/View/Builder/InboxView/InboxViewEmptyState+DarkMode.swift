@@ -208,7 +208,7 @@ public class InoxViewEmptyState_DarkMode: UIView {
 }
 
 public class DarkModeEmptyInboxViewConfig: InboxViewConfig {
-    public override init(lang: String) {
+    public override init(lang: CKLanguage) {
         super.init(lang: lang)
         style = .darkMode
         emptyState_titleColor = .white

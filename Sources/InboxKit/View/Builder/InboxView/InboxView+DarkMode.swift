@@ -144,7 +144,7 @@ public class InboxView_DarkMode: UIView, InboxViewProtocol, EmptyStateDelegate {
 }
 
 public class DarkModeInboxViewConfig: InboxViewConfig {
-    public override init(lang: String) {
+    public override init(lang: CKLanguage) {
         super.init(lang: lang)
         style = .darkMode
         titleColor = .white

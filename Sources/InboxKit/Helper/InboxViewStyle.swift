@@ -35,7 +35,7 @@ public enum InboxViewStyle {
         }
     }
     
-    public static func getViewConfigWithStyle(style: InboxViewStyle, lang: String) -> InboxViewConfig {
+    public static func getViewConfigWithStyle(style: InboxViewStyle, lang: CKLanguage) -> InboxViewConfig {
         switch style {
         case .darkMode:
             DarkModeInboxViewConfig(lang: lang)
