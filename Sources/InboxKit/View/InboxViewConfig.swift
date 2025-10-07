@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import ControlKitBase
 public class InboxViewConfig {
     public init(lang: CKLanguage) {
         self.lang = lang

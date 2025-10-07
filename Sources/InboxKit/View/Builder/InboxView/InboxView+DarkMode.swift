@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import ControlKitBase
 
 public protocol InboxDelegate: AnyObject {
     func dismiss()

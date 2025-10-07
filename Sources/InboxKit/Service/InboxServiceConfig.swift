@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ControlKitBase
 public struct InboxServiceConfig {
     public init(style: InboxViewStyle = .darkMode,
                 appId: String,
