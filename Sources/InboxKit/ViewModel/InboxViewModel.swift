@@ -6,20 +6,21 @@
 //
 import Foundation
 import UIKit
+import ControlKitBase
 
-public protocol InboxViewModel {
-    var inboxService: InboxServiceProtocol { get set }
+public protocol InboxViewModel: Inboxable {
+    var inboxService: GenericServiceProtocol { get set }
     var serviceConfig: InboxServiceConfig { get set }
     var response: InboxResponse? { get set }
     var request: InboxRequest { get }
 }
 
-public final class DefaultInboxViewModel: InboxViewModel, Inboxable {
-    public var inboxService: InboxServiceProtocol
+public final class DefaultInboxViewModel: InboxViewModel {
+    public var inboxService: GenericServiceProtocol
     public var serviceConfig: InboxServiceConfig
     public var response: InboxResponse?
     
-    public init(inboxService: InboxServiceProtocol = InboxService(),
+    public init(inboxService: GenericServiceProtocol = GenericService(),
                 serviceConfig: InboxServiceConfig) {
         self.inboxService = inboxService
         self.serviceConfig = serviceConfig

@@ -6,21 +6,22 @@
 //
 import Foundation
 import UIKit
+import ControlKitBase
 
 public protocol DetailViewModel: InboxActionable {
-    var actionService: ActionServiceProtocol { get set }
+    var actionService: GenericServiceProtocol { get set }
     var serviceConfig: InboxServiceConfig { get set }
     var itemModel: InboxModel { get set }
 }
 
 public final class DefaultDetailViewModel: DetailViewModel {
     public var itemModel: InboxModel
-    public var actionService: ActionServiceProtocol
+    public var actionService: GenericServiceProtocol
     public var serviceConfig: InboxServiceConfig
     public init(
         itemModel: InboxModel,
         serviceConfig: InboxServiceConfig,
-        actionService: ActionServiceProtocol = ActionService()
+        actionService: GenericServiceProtocol = GenericService()
     ) {
         self.actionService = actionService
         self.serviceConfig = serviceConfig

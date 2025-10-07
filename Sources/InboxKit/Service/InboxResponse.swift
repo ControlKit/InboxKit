@@ -6,19 +6,14 @@
 //
 
 import Foundation
-
-public typealias InboxLocalString = [InboxLocalizedText]
+import ControlKitBase
 
 public struct InboxResponse: Codable {
     public var data: [InboxModel]?
 }
 public struct InboxModel: Codable {
     public let id: String
-    public let title: InboxLocalString?
-    public let description: InboxLocalString?
+    public let title: LocalString?
+    public let description: LocalString?
     public let created_at: String?
-}
-public struct InboxLocalizedText: Codable {
-    public let language: String?
-    public let content: String?
 }

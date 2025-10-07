@@ -4,14 +4,22 @@
 //
 //  Created by Maziar Saadatfar on 10/5/25.
 //
+import ControlKitBase
 public protocol InboxActionable {
-    func setAction(_ action: InboxAction)
+    func setAction(_ action: ControlKitAction)
 }
 public extension InboxActionable where Self: DetailViewModel {
-    func setAction(_ action: InboxAction) {
+    func setAction(_ action: ControlKitAction) {
         Task {
-            let request = ActionRequest(appId: serviceConfig.appId, itemId: itemModel.id, action: action)
-            let _ = try await actionService.action(request: request)
+            var request = ControlKitBase.ActionRequest(
+                route: .force_update,
+                appId: serviceConfig.appId,
+                sdkVersion: inboxKit_Version,
+                action: action,
+                itemId: self.itemModel.id,
+            )
+            request.extraParameter = "\(request.itemId ?? "")"
+            let result: Result<ActionResponse> = try await actionService.execute(request: request)
         }
     }
 }

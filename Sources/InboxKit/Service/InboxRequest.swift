@@ -6,21 +6,25 @@
 //
 
 import Foundation
-public struct InboxRequest {
+import ControlKitBase
+public struct InboxRequest: GenericRequest {
+    public var itemId: String?
+    public var extraParameter: String?
     public var appId: String
-    public var route: String = "https://tauri.ir/api/inbox-view"
+    public var httpMethod: HTTPMethod = .get
+    public var route: ControlKitItem = .inbox
     public var applicationVersion: String = Bundle.main.releaseVersionNumber ?? String()
-    public var deviceUUID: String = UUID().uuidString
+    public var deviceUUID: String = CKDeviceUUID
     public var sdkVersion: String = inboxKit_Version
     
-    var dictionary: [String: String] {
+    public var headers: [String: String] {
         return ["x-app-id": appId,
                 "x-sdk-version": sdkVersion,
                 "x-version": applicationVersion,
                 "x-device-uuid": deviceUUID]
     }
     
-    var nsDictionary: NSDictionary {
-        return dictionary as NSDictionary
+    public var body: [String: String] {
+        return [:]
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ControlKitBase
 
 class InboxViewController: UIViewController, InboxDelegate {
     var viewModel: InboxViewModel
@@ -32,7 +33,7 @@ class InboxViewController: UIViewController, InboxDelegate {
         inboxView.tableView.delegate = self
         inboxView.delegate = self
         Task {
-            viewModel.response = try await viewModel.inboxService.getInbox(request: viewModel.request)
+            viewModel.response = try await viewModel.inboxService.execute(request: viewModel.request).value
             if viewModel.response?.data?.count ?? 0 <= 0 {
                 DispatchQueue.main.async {
                     inboxView.emptyStateView.isHidden = false

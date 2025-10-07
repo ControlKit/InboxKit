@@ -6,6 +6,7 @@
 //
 import Foundation
 import UIKit
+import ControlKitBase
 public struct InboxViewPresenter {
     var config: InboxViewConfig
     public init(data: InboxModel?, config: InboxViewConfig) {
@@ -26,7 +27,7 @@ public struct InboxViewPresenter {
         }
     }
     
-    func getLocalizeString(_ localize: InboxLocalString) -> String? {
+    func getLocalizeString(_ localize: LocalString) -> String? {
         guard let localizeString = localize.first(where: { $0.language == config.lang.rawValue }) else {
             if let defaultLang = localize.first {
                 return defaultLang.content
