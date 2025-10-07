@@ -6,6 +6,7 @@
 //
 import Foundation
 import UIKit
+import ControlKitBase
 protocol ItemTableViewCellCreationable {
     var titleLabel: UILabel { get set }
     var descriptionLabel: UILabel { get set }

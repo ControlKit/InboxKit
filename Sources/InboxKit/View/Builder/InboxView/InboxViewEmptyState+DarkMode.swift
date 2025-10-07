@@ -5,6 +5,7 @@
 //  Created by Maziar Saadatfar on 10/3/25.
 //
 import UIKit
+import ControlKitBase
 public class InoxViewEmptyState_DarkMode: UIView {
     var config: InboxViewConfig
     weak var delegate: EmptyStateDelegate?

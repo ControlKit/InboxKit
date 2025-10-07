@@ -6,6 +6,7 @@
 //
 import Foundation
 import UIKit
+import ControlKitBase
 public class DetailView_DarkMode: UIView, DetailViewProtocol {
     var config: InboxViewConfig
     var viewModel: DetailViewModel

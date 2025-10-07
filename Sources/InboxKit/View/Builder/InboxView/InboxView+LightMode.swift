@@ -6,6 +6,7 @@
 //
 import Foundation
 import UIKit
+import ControlKitBase
 
 public class InboxView_LightMode: UIView, InboxViewProtocol, EmptyStateDelegate {
     var config: InboxViewConfig

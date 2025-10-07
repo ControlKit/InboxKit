@@ -5,6 +5,7 @@
 //  Created by Maziar Saadatfar on 10/3/25.
 //
 import UIKit
+import ControlKitBase
 protocol EmptyStateDelegate: AnyObject {
     func didTapBack()
 }

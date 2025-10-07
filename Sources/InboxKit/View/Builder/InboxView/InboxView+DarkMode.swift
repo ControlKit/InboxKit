@@ -157,19 +157,3 @@ public class DarkModeInboxViewConfig: InboxViewConfig {
         cell_arrowIconColor = UIColor(r: 213, g: 213, b: 213)
     }
 }
-
-class ImageHelper {
-    static var resolvedBundle: Bundle {
-#if SWIFT_PACKAGE
-        return Bundle.module
-#else
-        return Bundle(for: self)
-#endif
-    }
-    
-    static func image(_ name: String) -> UIImage? {
-        return UIImage(named: name,
-                       in: resolvedBundle,
-                       compatibleWith: nil)
-    }
-}
