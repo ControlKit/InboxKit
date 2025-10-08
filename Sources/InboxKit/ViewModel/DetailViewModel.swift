@@ -8,10 +8,11 @@ import Foundation
 import UIKit
 import ControlKitBase
 
-public protocol DetailViewModel: InboxActionable {
+public protocol DetailViewModel: InboxActionable, MessageReadSavable {
     var actionService: GenericServiceProtocol { get set }
     var serviceConfig: InboxServiceConfig { get set }
     var itemModel: InboxModel { get set }
+    func saveReadMessage() 
 }
 
 public final class DefaultDetailViewModel: DetailViewModel {
@@ -26,5 +27,9 @@ public final class DefaultDetailViewModel: DetailViewModel {
         self.actionService = actionService
         self.serviceConfig = serviceConfig
         self.itemModel = itemModel
+    }
+    
+    public func saveReadMessage() {
+        saveReadMessage(id: itemModel.id)
     }
 }

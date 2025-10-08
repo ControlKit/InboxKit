@@ -31,6 +31,7 @@ class DetailViewController: UIViewController {
                                                    config: config)
         view.addSubview(inboxView)
         inboxView.fixInView(view)
+        viewModel.saveReadMessage()
         viewModel.setAction(.view)
     }
 }

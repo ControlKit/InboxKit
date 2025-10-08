@@ -24,7 +24,10 @@ let package = Package(
         .target(
             name: "InboxKit",
             dependencies: ["ControlKitBase"],
-            resources: [.process("Resources")]
+            resources: [
+                .process("Resources"),
+                .process("Data")
+            ]
         ),
         .testTarget(
             name: "InboxKitTests",
