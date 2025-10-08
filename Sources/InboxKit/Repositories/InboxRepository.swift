@@ -44,7 +44,7 @@ public class InboxRepository {
     
     public func getInbox(with id: String) -> Inbox? {
         let request: NSFetchRequest<Inbox> = Inbox.fetchRequest()
-        request.predicate = NSPredicate(format: "id == '%@'", id)
+        request.predicate = NSPredicate(format: "id == %@", id)
         request.fetchLimit = 1
         
         do {
