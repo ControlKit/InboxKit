@@ -16,7 +16,9 @@ public class InboxRepository {
     // MARK: - Create
     @discardableResult
     public func createInbox(with id: String) -> Inbox? {
-        let context = coreDataStack.context
+        guard let context = coreDataStack.context else {
+            return nil
+        }
         guard getInbox(with: id) == nil else {
             return nil
         }
@@ -34,8 +36,9 @@ public class InboxRepository {
     // MARK: - Read
     public func getAllInboxes() -> [Inbox] {
         let request: NSFetchRequest<Inbox> = Inbox.fetchRequest()
+        
         do {
-            return try coreDataStack.context.fetch(request)
+            return try coreDataStack.context?.fetch(request) ?? []
         } catch {
             print("Error fetching inboxes: \(error)")
             return []
@@ -48,7 +51,7 @@ public class InboxRepository {
         request.fetchLimit = 1
         
         do {
-            let results = try coreDataStack.context.fetch(request)
+            let results = try coreDataStack.context?.fetch(request) ?? []
             return results.first
         } catch {
             print("Error fetching inbox with id \(id): \(error)")
@@ -61,7 +64,7 @@ public class InboxRepository {
         inbox.id = newId
         
         do {
-            try coreDataStack.context.save()
+            try coreDataStack.context?.save()
             return true
         } catch {
             print("Error updating inbox: \(error)")
@@ -71,10 +74,10 @@ public class InboxRepository {
     
     // MARK: - Delete
     public func deleteInbox(_ inbox: Inbox) -> Bool {
-        coreDataStack.context.delete(inbox)
+        coreDataStack.context?.delete(inbox)
         
         do {
-            try coreDataStack.context.save()
+            try coreDataStack.context?.save()
             return true
         } catch {
             print("Error deleting inbox: \(error)")
@@ -94,7 +97,7 @@ public class InboxRepository {
         let request: NSFetchRequest<Inbox> = Inbox.fetchRequest()
         
         do {
-            return try coreDataStack.context.count(for: request)
+            return try coreDataStack.context?.count(for: request) ?? 0
         } catch {
             print("Error counting inboxes: \(error)")
             return 0

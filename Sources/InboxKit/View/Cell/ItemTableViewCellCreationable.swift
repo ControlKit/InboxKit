@@ -22,7 +22,7 @@ protocol ItemTableViewCellCreationable {
     func getArrowIconImageView() -> UIImageView
     func getUnreadIconImageView() -> UIImageView
     
-    func configure(config: InboxViewConfig)
+    func configure(config: InboxViewConfig, isExist: Bool)
 }
 extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
     func setupViews() {

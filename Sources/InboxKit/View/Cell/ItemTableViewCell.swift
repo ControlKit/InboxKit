@@ -26,7 +26,7 @@ class ItemTableViewCell: UITableViewCell,
     
     func config(item: InboxModel, config: InboxViewConfig, isExist: Bool) {
         let config = InboxViewPresenter(data: item, config: config).config
-        configure(config: config)
+        configure(config: config, isExist: isExist)
     }
     
     static var reusableId: String {

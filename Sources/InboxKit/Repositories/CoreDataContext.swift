@@ -28,16 +28,16 @@ public class CoreDataContext {
         return container
     }()
     
-    var context: NSManagedObjectContext {
-        return persistentContainer?.viewContext ?? NSManagedObjectContext()
+    var context: NSManagedObjectContext? {
+        return persistentContainer?.viewContext
     }
     
     func save() {
-        let context = persistentContainer?.viewContext ?? NSManagedObjectContext()
+        let context = persistentContainer?.viewContext
         
-        if context.hasChanges {
+        if context?.hasChanges ?? false {
             do {
-                try context.save()
+                try context?.save()
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
