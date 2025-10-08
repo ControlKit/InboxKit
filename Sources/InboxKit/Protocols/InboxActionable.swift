@@ -12,7 +12,7 @@ public extension InboxActionable where Self: DetailViewModel {
     func setAction(_ action: ControlKitAction) {
         Task {
             var request = ControlKitBase.ActionRequest(
-                route: .force_update,
+                route: .inbox,
                 appId: serviceConfig.appId,
                 sdkVersion: inboxKit_Version,
                 action: action,
