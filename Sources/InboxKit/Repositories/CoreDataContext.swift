@@ -13,22 +13,27 @@ public class CoreDataContext {
     
     private init() {}
     
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "InboxKit")
-        container.loadPersistentStores { _, error in
+    open class PersistentContainer: NSPersistentContainer, @unchecked Sendable {
+    }
+        
+    lazy public var persistentContainer: PersistentContainer? = {
+        guard let modelURL = Bundle.module.url(forResource:"InboxKit", withExtension: "momd") else { return  nil }
+        guard let model = NSManagedObjectModel(contentsOf: modelURL) else { return nil }
+        let container = PersistentContainer(name:"InboxKit",managedObjectModel:model)
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                print("Unresolved error \(error), \(error.userInfo)")
             }
-        }
+        })
         return container
     }()
     
     var context: NSManagedObjectContext {
-        return persistentContainer.viewContext
+        return persistentContainer?.viewContext ?? NSManagedObjectContext()
     }
     
     func save() {
-        let context = persistentContainer.viewContext
+        let context = persistentContainer?.viewContext ?? NSManagedObjectContext()
         
         if context.hasChanges {
             do {
@@ -40,3 +45,6 @@ public class CoreDataContext {
         }
     }
 }
+
+
+
