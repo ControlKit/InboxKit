@@ -17,14 +17,11 @@ public class InboxRepository {
     @discardableResult
     public func createInbox(with id: String) -> Inbox? {
         let context = coreDataStack.context
-        
         guard getInbox(with: id) == nil else {
             return nil
         }
-        
         let inbox = Inbox(context: context)
         inbox.id = id
-        
         do {
             try context.save()
             return inbox
@@ -37,7 +34,6 @@ public class InboxRepository {
     // MARK: - Read
     public func getAllInboxes() -> [Inbox] {
         let request: NSFetchRequest<Inbox> = Inbox.fetchRequest()
-        
         do {
             return try coreDataStack.context.fetch(request)
         } catch {
@@ -48,7 +44,7 @@ public class InboxRepository {
     
     public func getInbox(with id: String) -> Inbox? {
         let request: NSFetchRequest<Inbox> = Inbox.fetchRequest()
-        request.predicate = NSPredicate(format: "id == %@", id)
+        request.predicate = NSPredicate(format: "id == '%@'", id)
         request.fetchLimit = 1
         
         do {
