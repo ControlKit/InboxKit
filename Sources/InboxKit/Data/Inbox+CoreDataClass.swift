@@ -11,6 +11,6 @@ public typealias InboxCoreDataClassSet = NSSet
 @objc(Inbox)
 public class Inbox: NSManagedObject {
     public override var description: String {
-        return "Inbox"
+        return "InboxKit.Inbox"
     }
 }
