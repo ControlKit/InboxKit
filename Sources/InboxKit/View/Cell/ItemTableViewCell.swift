@@ -10,7 +10,8 @@ class ItemTableViewCell: UITableViewCell,
     lazy var titleLabel: UILabel = getTitleLabel()
     lazy var descriptionLabel: UILabel = getDescriptionLabel()
     lazy var dateLabel: UILabel = getDateLabel()
-    lazy var iconImageView: UIImageView = getIconImageView()
+    lazy var arrowIconImageView: UIImageView = getArrowIconImageView()
+    lazy var unreadIconImageView: UIImageView = getUnreadIconImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -23,7 +24,7 @@ class ItemTableViewCell: UITableViewCell,
         super.layoutSubviews()
     }
     
-    func config(item: InboxModel, config: InboxViewConfig) {
+    func config(item: InboxModel, config: InboxViewConfig, isExist: Bool) {
         let config = InboxViewPresenter(data: item, config: config).config
         configure(config: config)
     }

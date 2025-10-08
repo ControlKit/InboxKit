@@ -11,14 +11,16 @@ protocol ItemTableViewCellCreationable {
     var titleLabel: UILabel { get set }
     var descriptionLabel: UILabel { get set }
     var dateLabel: UILabel { get set }
-    var iconImageView: UIImageView { get set }
+    var arrowIconImageView: UIImageView { get set }
+    var unreadIconImageView: UIImageView { get set }
     
     func setupViews()
     
     func getTitleLabel() -> UILabel
     func getDescriptionLabel() -> UILabel
     func getDateLabel() -> UILabel
-    func getIconImageView() -> UIImageView
+    func getArrowIconImageView() -> UIImageView
+    func getUnreadIconImageView() -> UIImageView
     
     func configure(config: InboxViewConfig)
 }
@@ -29,7 +31,8 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
         addTitleLabel()
         addDescriptionLabel()
         addDateLabel()
-        addIcon()
+        addArrowIcon()
+        addUnreadIcon()
     }
     func getTitleLabel() -> UILabel {
         let label = UILabel()
@@ -49,10 +52,16 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
         label.numberOfLines = 1
         return label
     }
-    func getIconImageView() -> UIImageView {
+    func getArrowIconImageView() -> UIImageView {
         let img = UIImageView()
         img.contentMode = .scaleAspectFit
         img.image = ImageHelper.image("arrow")
+        return img
+    }
+    func getUnreadIconImageView() -> UIImageView {
+        let img = UIImageView()
+        img.contentMode = .scaleAspectFit
+        img.image = ImageHelper.image("dot-icon")
         return img
     }
     func addTitleLabel() {
@@ -141,30 +150,30 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             multiplier: 1,
             constant: 80).isActive = true
     }
-    func addIcon() {
-        contentView.addSubview(iconImageView)
-        iconImageView.translatesAutoresizingMaskIntoConstraints = false
+    func addArrowIcon() {
+        contentView.addSubview(arrowIconImageView)
+        arrowIconImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint(
-            item: iconImageView,
+            item: arrowIconImageView,
             attribute: .top,
             relatedBy: .equal,
             toItem: contentView,
             attribute: .top,
             multiplier: 1,
-            constant: 30).isActive = true
+            constant: 25).isActive = true
         NSLayoutConstraint(
-            item: iconImageView,
+            item: arrowIconImageView,
             attribute: .left,
             relatedBy: .equal,
             toItem: dateLabel,
             attribute: .right,
             multiplier: 1,
             constant: 10).isActive = true
-        iconImageView.trailingAnchor.constraint(
+        arrowIconImageView.trailingAnchor.constraint(
             equalTo: contentView.trailingAnchor,
             constant: -24).isActive = true
         NSLayoutConstraint(
-            item: iconImageView,
+            item: arrowIconImageView,
             attribute: .height,
             relatedBy: .equal,
             toItem: nil,
@@ -172,7 +181,7 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             multiplier: 1,
             constant: 14.36).isActive = true
         NSLayoutConstraint(
-            item: iconImageView,
+            item: arrowIconImageView,
             attribute: .width,
             relatedBy: .equal,
             toItem: nil,
@@ -180,7 +189,38 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             multiplier: 1,
             constant: 8.0).isActive = true
     }
-    func configure(config: InboxViewConfig) {
+    func addUnreadIcon() {
+        contentView.addSubview(unreadIconImageView)
+        unreadIconImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint(
+            item: unreadIconImageView,
+            attribute: .centerY,
+            relatedBy: .equal,
+            toItem: contentView,
+            attribute: .centerY,
+            multiplier: 1,
+            constant: 0).isActive = true
+        unreadIconImageView.trailingAnchor.constraint(
+            equalTo: contentView.trailingAnchor,
+            constant: -24).isActive = true
+        NSLayoutConstraint(
+            item: unreadIconImageView,
+            attribute: .height,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 1,
+            constant: 8.0).isActive = true
+        NSLayoutConstraint(
+            item: unreadIconImageView,
+            attribute: .width,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 1,
+            constant: 8.0).isActive = true
+    }
+    func configure(config: InboxViewConfig, isExist: Bool) {
         titleLabel.text = config.cell_Title
         titleLabel.font = config.cell_TitleFont
         titleLabel.textColor = config.cell_TitleColor
@@ -192,7 +232,12 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
         dateLabel.text = config.cell_Date
         dateLabel.font = config.cell_DateFont
         dateLabel.textColor = config.cell_DateColor
-        iconImageView.image = iconImageView.image?.imageWithColor(color: config.cell_arrowIconColor)
+        arrowIconImageView.image = arrowIconImageView.image?.imageWithColor(color: config.cell_arrowIconColor)
+        if isExist {
+            unreadIconImageView.isHidden = true
+        } else {
+            unreadIconImageView.isHidden = false
+        }
     }
 }
 

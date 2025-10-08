@@ -15,12 +15,7 @@ extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
             withIdentifier: ItemTableViewCell.reusableId,
             for: indexPath) as? ItemTableViewCell else { return UITableViewCell() }
         if let item = viewModel.response?.data?[indexPath.row] {
-            cell.config(item: item, config: config.viewConfig)
-            if viewModel.messageCheck(id: item.id) {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
-            }
+            cell.config(item: item, config: config.viewConfig, isExist: viewModel.messageCheck(id: item.id))
             return cell
         }
         return UITableViewCell()
