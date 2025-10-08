@@ -14,7 +14,7 @@ public class DatabaseTest {
         print("=== Testing Database Connection ===")
         
         // Test CoreDataStack
-        let coreDataStack = CoreDataStack.shared
+        let coreDataStack = CoreDataContext.shared
         print("✅ CoreDataStack initialized")
         
         // Test Repository

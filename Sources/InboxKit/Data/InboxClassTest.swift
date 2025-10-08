@@ -4,17 +4,12 @@
 //
 //  Created by Maziar Saadatfar on 10/8/25.
 //
-
 import Foundation
 import CoreData
-
 public class InboxClassTest {
-    
     public static func testGeneratedInboxClass() {
         print("=== Testing Generated Inbox Class ===")
-        
-        let context = CoreDataStack.shared.context
-        
+        let context = CoreDataContext.shared.context
         // Test 1: Basic Inbox creation
         print("\n1. Testing basic Inbox creation...")
         let inbox1 = Inbox(context: context)

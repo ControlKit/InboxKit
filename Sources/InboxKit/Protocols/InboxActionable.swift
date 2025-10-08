@@ -19,7 +19,7 @@ public extension InboxActionable where Self: DetailViewModel {
                 itemId: self.itemModel.id,
             )
             request.extraParameter = "\(request.itemId ?? "")"
-            let result: Result<ActionResponse> = try await actionService.execute(request: request)
+            let _: Result<ActionResponse> = try await actionService.execute(request: request)
         }
     }
 }

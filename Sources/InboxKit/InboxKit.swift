@@ -14,6 +14,7 @@ public class InboxKit {
                           modalPresentationStyle: UIModalPresentationStyle = .fullScreen,
                           config: InboxServiceConfig) async {
         Task {
+            
             let viewModel = DefaultInboxViewModel(serviceConfig: config)
             let inboxVC = InboxViewController(
                 viewModel: viewModel,
