@@ -13,6 +13,7 @@ public protocol InboxViewModel: Inboxable {
     var serviceConfig: InboxServiceConfig { get set }
     var response: InboxResponse? { get set }
     var request: InboxRequest { get }
+    func messageCheck(id: String) -> Bool
 }
 
 public final class DefaultInboxViewModel: InboxViewModel {
@@ -29,5 +30,11 @@ public final class DefaultInboxViewModel: InboxViewModel {
     public var request: InboxRequest {
         return InboxRequest(appId: serviceConfig.appId,
                             sdkVersion: serviceConfig.sdkVersion)
+    }
+    
+    public func messageCheck(id: String) -> Bool {
+        let repository = InboxRepository()
+        let message = repository.getInbox(with: id)
+        return message != nil
     }
 }

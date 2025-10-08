@@ -16,6 +16,11 @@ extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
             for: indexPath) as? ItemTableViewCell else { return UITableViewCell() }
         if let item = viewModel.response?.data?[0] {
             cell.config(item: item, config: config.viewConfig)
+            if viewModel.messageCheck(id: item.id) {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
             return cell
         }
         return UITableViewCell()
