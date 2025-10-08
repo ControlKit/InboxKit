@@ -11,7 +11,8 @@ import ControlKitBase
 class InboxViewController: UIViewController, InboxDelegate {
     var viewModel: InboxViewModel
     let config: InboxServiceConfig
-
+    var inboxView: InboxViewProtocol?
+    
     init(viewModel: InboxViewModel, config: InboxServiceConfig) {
         self.viewModel = viewModel
         self.config = config
@@ -32,6 +33,7 @@ class InboxViewController: UIViewController, InboxDelegate {
         inboxView.tableView.dataSource = self
         inboxView.tableView.delegate = self
         inboxView.delegate = self
+        self.inboxView = inboxView
         Task {
             viewModel.response = try await viewModel.inboxService.execute(request: viewModel.request).value
             if viewModel.response?.data?.count ?? 0 <= 0 {
@@ -46,6 +48,12 @@ class InboxViewController: UIViewController, InboxDelegate {
             inboxView.tableView.reloadData()
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.inboxView?.tableView.reloadData()
+    }
+    
     func dismiss() {
         self.navigationController?.dismiss(animated: true)
     }

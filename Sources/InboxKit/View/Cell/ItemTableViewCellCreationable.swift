@@ -199,7 +199,7 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             toItem: contentView,
             attribute: .centerY,
             multiplier: 1,
-            constant: 0).isActive = true
+            constant: 22.0).isActive = true
         unreadIconImageView.trailingAnchor.constraint(
             equalTo: contentView.trailingAnchor,
             constant: -24).isActive = true
@@ -210,7 +210,7 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             toItem: nil,
             attribute: .notAnAttribute,
             multiplier: 1,
-            constant: 8.0).isActive = true
+            constant: 16.0).isActive = true
         NSLayoutConstraint(
             item: unreadIconImageView,
             attribute: .width,
@@ -218,7 +218,7 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             toItem: nil,
             attribute: .notAnAttribute,
             multiplier: 1,
-            constant: 8.0).isActive = true
+            constant: 16.0).isActive = true
     }
     func configure(config: InboxViewConfig, isExist: Bool) {
         titleLabel.text = config.cell_Title
