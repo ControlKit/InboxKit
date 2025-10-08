@@ -14,7 +14,7 @@ extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: ItemTableViewCell.reusableId,
             for: indexPath) as? ItemTableViewCell else { return UITableViewCell() }
-        if let item = viewModel.response?.data?[0] {
+        if let item = viewModel.response?.data?[indexPath.row] {
             cell.config(item: item, config: config.viewConfig)
             if viewModel.messageCheck(id: item.id) {
                 cell.accessoryType = .checkmark
