@@ -10,15 +10,12 @@ import ControlKitBase
 public struct InboxServiceConfig {
     public init(style: InboxViewStyle = .darkMode,
                 appId: String,
-                language: CKLanguage,
-                version: String) {
+                language: CKLanguage) {
         self.viewConfig = InboxViewStyle.getViewConfigWithStyle(style: style, lang: language)
         self.appId = appId
-        self.version = version
         self.language = language
     }
     public var appId: String
-    public var version: String
     public var language: CKLanguage
     public var sdkVersion: String = inboxKit_Version
     public var viewConfig: InboxViewConfig
