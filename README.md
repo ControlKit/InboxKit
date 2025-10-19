@@ -33,6 +33,15 @@ That's it! Your inbox is ready to use with full functionality including message 
 - Swift 5.9+
 - Xcode 15.0+
 
+## 📱 Cross-Platform Support
+
+InboxKit is part of the ControlKit ecosystem and provides cross-platform messaging solutions:
+
+- **🍎 iOS**: [InboxKit](https://github.com/ControlKit/InboxKit) - Swift package for iOS applications
+- **🤖 Android**: [InboxKit-Android](https://github.com/ControlKit/InboxKit-Android) - Kotlin library for Android applications
+
+Both versions maintain consistent APIs and functionality across platforms, making it easy to implement inbox messaging in your iOS and Android apps with the same developer experience.
+
 ## 📦 Installation
 
 ### Swift Package Manager
@@ -41,7 +50,7 @@ Add InboxKit to your project using Swift Package Manager:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/yourusername/InboxKit.git", from: "1.0.0")
+    .package(url: "https://github.com/ControlKit/InboxKit.git", from: "1.0.0")
 ]
 ```
 
@@ -336,11 +345,17 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please feel free to submit a Pull Request to the appropriate repository:
+
+- **iOS Contributions**: [InboxKit Repository](https://github.com/ControlKit/InboxKit)
+- **Android Contributions**: [InboxKit-Android Repository](https://github.com/ControlKit/InboxKit-Android)
 
 ## 📞 Support
 
-For support, email support@inboxkit.com or create an issue on GitHub.
+For support, email support@controlkit.com or create an issue on GitHub:
+
+- **iOS Issues**: [InboxKit Issues](https://github.com/ControlKit/InboxKit/issues)
+- **Android Issues**: [InboxKit-Android Issues](https://github.com/ControlKit/InboxKit-Android/issues)
 
 ## 🔄 Version History
 
@@ -348,4 +363,10 @@ For support, email support@inboxkit.com or create an issue on GitHub.
 
 ---
 
-**Made with ❤️ for iOS developers**
+**Made with ❤️ by the ControlKit team**
+
+## 🔗 Related Projects
+
+- **🍎 iOS**: [InboxKit](https://github.com/ControlKit/InboxKit) - Swift package for iOS
+- **🤖 Android**: [InboxKit-Android](https://github.com/ControlKit/InboxKit-Android) - Kotlin library for Android
+- **🌐 ControlKit**: [ControlKitBase](https://github.com/ControlKit/ControlKitBase) - Base framework for ControlKit ecosystem
