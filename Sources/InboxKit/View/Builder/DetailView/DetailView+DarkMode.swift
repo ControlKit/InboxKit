@@ -121,7 +121,7 @@ public class DetailView_DarkMode: UIView, DetailViewProtocol {
             constant: 24).isActive = true
         titleLabel.trailingAnchor.constraint(
             equalTo: contentView.trailingAnchor,
-            constant: 24).isActive = true
+            constant: -24).isActive = true
         
         NSLayoutConstraint(
             item: titleLabel,
@@ -130,7 +130,7 @@ public class DetailView_DarkMode: UIView, DetailViewProtocol {
             toItem: nil,
             attribute: .notAnAttribute,
             multiplier: 1,
-            constant: -24).isActive = true
+            constant: 24).isActive = true
     }
     
     public func setDateViewConstraint() {
