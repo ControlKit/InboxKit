@@ -104,7 +104,7 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             constant: 42).isActive = true
         descriptionLabel.trailingAnchor.constraint(
             equalTo: contentView.trailingAnchor,
-            constant: 42).isActive = true
+            constant: -42).isActive = true
         NSLayoutConstraint(
             item: descriptionLabel,
             attribute: .height,
