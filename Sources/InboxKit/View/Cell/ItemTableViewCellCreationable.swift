@@ -77,7 +77,7 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             constant: 24).isActive = true
         titleLabel.leadingAnchor.constraint(
             equalTo: contentView.leadingAnchor,
-            constant: 42).isActive = true
+            constant: 24).isActive = true
         NSLayoutConstraint(
             item: titleLabel,
             attribute: .height,
@@ -101,10 +101,10 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             constant: 8).isActive = true
         descriptionLabel.leadingAnchor.constraint(
             equalTo: contentView.leadingAnchor,
-            constant: 42).isActive = true
+            constant: 24).isActive = true
         descriptionLabel.trailingAnchor.constraint(
             equalTo: contentView.trailingAnchor,
-            constant: -42).isActive = true
+            constant: -24).isActive = true
         NSLayoutConstraint(
             item: descriptionLabel,
             attribute: .height,
@@ -171,7 +171,7 @@ extension ItemTableViewCellCreationable where Self: ItemTableViewCell {
             constant: 10).isActive = true
         arrowIconImageView.trailingAnchor.constraint(
             equalTo: contentView.trailingAnchor,
-            constant: -24).isActive = true
+            constant: -42).isActive = true
         NSLayoutConstraint(
             item: arrowIconImageView,
             attribute: .height,
